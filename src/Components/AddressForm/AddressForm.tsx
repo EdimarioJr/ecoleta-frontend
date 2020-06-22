@@ -56,7 +56,7 @@ const AddressForm: React.FC<AddressProps> = (props) => {
               return (
                 <option
                   key={index}
-                  onTouchStart={(event: any) => {
+                  onMouseDown={(event: any) => {
                     setSelectedUf(event.target.value);
                     props.selectedUf(event.target.value);
                   }}
@@ -75,7 +75,7 @@ const AddressForm: React.FC<AddressProps> = (props) => {
               cities.map((city: any, index: number) => {
                 return (
                   <option
-                    onTouchStart={(event: any) =>
+                    onMouseDown={(event: any) =>
                       props.selectedCity(event.target.value)
                     }
                     key={index}
