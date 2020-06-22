@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import ibge from "../../services/ibge";
-import {Select} from "./style"
+import { Select } from "./style";
 
 interface AddressProps {
   selectedCity: (a: string) => void;
@@ -49,47 +49,52 @@ const AddressForm: React.FC<AddressProps> = (props) => {
 
   return (
     <>
-        <div>
-          <p>Estado</p>
-          <Select defaultValue="UF">
-            {ufs.map((uf: string, index: number) => {
+      <div>
+        <p>Estado</p>
+        <Select
+          onChange={(event: any) => {
+            props.selectedCity(event.target.value);
+            console.log(event.target.value);
+          }}
+          defaultValue="UF"
+        >
+          {ufs.map((uf: string, index: number) => {
+            return (
+              <option
+                key={index}
+                onMouseDown={(event: any) => {
+                  setSelectedUf(event.target.value);
+                  props.selectedUf(event.target.value);
+                }}
+                value={uf}
+              >
+                {uf}
+              </option>
+            );
+          })}
+        </Select>
+      </div>
+      <div>
+        <p>Cidade</p>
+        <Select
+          onChange={(event: any) => {
+            props.selectedCity(event.target.value);
+            console.log(event.target.value);
+          }}
+        >
+          {selectedUf ? (
+            cities.map((city: any, index: number) => {
               return (
-                <option
-                  key={index}
-                  onMouseDown={(event: any) => {
-                    setSelectedUf(event.target.value);
-                    props.selectedUf(event.target.value);
-                  }}
-                  value={uf}
-                >
-                  {uf}
+                <option key={index} value={city.nome}>
+                  {city.nome}
                 </option>
               );
-            })}
-          </Select>
-        </div>
-        <div>
-          <p>Cidade</p>
-          <Select>
-            {selectedUf ? (
-              cities.map((city: any, index: number) => {
-                return (
-                  <option
-                    onMouseDown={(event: any) =>
-                      props.selectedCity(event.target.value)
-                    }
-                    key={index}
-                    value={city.nome}
-                  >
-                    {city.nome}
-                  </option>
-                );
-              })
-            ) : (
-              <option>Selecione um Estado</option>
-            )}
-          </Select>
-        </div>
+            })
+          ) : (
+            <option>Selecione um Estado</option>
+          )}
+        </Select>
+      </div>
     </>
   );
 };
