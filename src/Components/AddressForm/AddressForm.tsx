@@ -58,7 +58,7 @@ const AddressForm: React.FC<AddressProps> = (props) => {
           onChange={(event: any) => {
             props.selectedUf(event.target.value);
             setSelectedUf(event.target.value)
-            
+            alert("Entrou no on Change")
           }}
           defaultValue="UF"
         >
