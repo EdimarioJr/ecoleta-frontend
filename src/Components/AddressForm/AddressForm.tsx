@@ -41,7 +41,10 @@ const AddressForm: React.FC<AddressProps> = (props) => {
     async function fetchCities() {
       await ibge
         .get(`/estados/${selectedUf}/municipios`)
-        .then((response) => setCities(response.data));
+        .then((response) => {
+          setCities(response.data)
+          alert(selectedUf)
+        });
     }
 
     fetchCities();
@@ -55,6 +58,7 @@ const AddressForm: React.FC<AddressProps> = (props) => {
           onChange={(event: any) => {
             props.selectedUf(event.target.value);
             setSelectedUf(event.target.value)
+            
           }}
           defaultValue="UF"
         >
