@@ -53,8 +53,8 @@ const AddressForm: React.FC<AddressProps> = (props) => {
         <p>Estado</p>
         <Select
           onChange={(event: any) => {
-            props.selectedCity(event.target.value);
-            console.log(event.target.value);
+            props.selectedUf(event.target.value);
+            setSelectedUf(event.target.value)
           }}
           defaultValue="UF"
         >
@@ -62,10 +62,6 @@ const AddressForm: React.FC<AddressProps> = (props) => {
             return (
               <option
                 key={index}
-                onMouseDown={(event: any) => {
-                  setSelectedUf(event.target.value);
-                  props.selectedUf(event.target.value);
-                }}
                 value={uf}
               >
                 {uf}
