@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Container, OverlayBox } from "../../commonStyles";
 import Header from "../../Components/Header/Header";
@@ -21,15 +21,10 @@ function Homepage() {
   const [city, setCity] = useState("");
   const [state, setState] = useState("");
 
-  useEffect(() => {
-    console.log(city, state);
-  }, [city, state]);
-
-  function handleClickOverlay(event: any){
-    if(event.target.id === "box")
-      setSearchOn(false)
+  function handleClickOverlay(event: any) {
+    if (event.target.id === "box") setSearchOn(false);
   }
-  
+
   return (
     <>
       <Header>
@@ -52,7 +47,7 @@ function Homepage() {
               de coleta de forma eficiente.
             </h3>
             <SearchButton onClick={() => setSearchOn(true)}>
-              <FiSearch size="min(2rem, 30px)" color="white" />
+              <FiSearch size="30px" color="white" />
               <ButtonNew>
                 <h4>Pesquisar pontos de coleta</h4>
               </ButtonNew>

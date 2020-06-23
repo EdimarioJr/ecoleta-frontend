@@ -9,6 +9,11 @@ padding: 1rem;
 background-color: #f0f0f5;
 border-radius: 7px;
 border: none;
+cursor: pointer;
+
+option{
+  cursor: pointer;
+}
 
 &::-ms-expand {
   display: none;
