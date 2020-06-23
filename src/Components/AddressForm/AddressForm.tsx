@@ -23,7 +23,6 @@ const AddressForm: React.FC<AddressProps> = (props) => {
   const [cities, setCities] = useState([] as string[]);
 
   const [selectedUf, setSelectedUf] = useState("");
-  const [entrou,setEntrou] = useState("")
 
   useEffect(() => {
     async function fetchStates() {
@@ -54,7 +53,6 @@ const AddressForm: React.FC<AddressProps> = (props) => {
         <p>Estado</p>
         <Select
           onChange={(event: any) => {
-            setEntrou('entrou')
             props.selectedUf(event.target.value);
             setSelectedUf(event.target.value);
           }}
@@ -70,7 +68,6 @@ const AddressForm: React.FC<AddressProps> = (props) => {
         </Select>
       </div>
       <div>
-        {entrou? <p>adsada</p>: ''}
         <p>Cidade</p>
         <Select
           onChange={(event: any) => {
